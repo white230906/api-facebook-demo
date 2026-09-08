@@ -5,6 +5,9 @@ using facebook_demo.Repo;
 using Microsoft.EntityFrameworkCore;
 using MailService = facebook_demo.Service.MailService;
 using JwtService = facebook_demo.Service.JwtService;
+using CloudinaryService = facebook_demo.Service.CloudinaryService;
+using MediaService = facebook_demo.Service.MediaService;
+using FacebookService = facebook_demo.Service.FacebookService;
 
 
     var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +29,8 @@ using JwtService = facebook_demo.Service.JwtService;
 
     builder.Services.AddScoped<MailService.IService, MailService.Service>();
     builder.Services.AddScoped<JwtService.IService, JwtService.Service>();
+    builder.Services.AddScoped<MediaService.IService, CloudinaryService.Service>();
+    builder.Services.AddHttpClient<FacebookService.IService, FacebookService.Service>();
     builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();
 
     //builder.Services.AddValidatorsFromAssembly(AssemblyReference.Assembly);
